@@ -2,7 +2,8 @@ const Cine = require('../models/cine.model')
 
 async function getAllCines(req, res) {
   try {
-    const cines = await Cine.findAll()
+    const cines = await Cine.findAll({
+      where: req.query})
     return !cines ? res.status(404).send('No existen cines') : res.status(200).json(cines)
   } catch (error) {
     return res.status(500).send(error.message)
@@ -11,7 +12,6 @@ async function getAllCines(req, res) {
 
 async function getOneCine(req, res) {
     try {
-        console.log(req.params.name)
       const cine = await Cine.findAll({
         where: {
             name: req.params.name
