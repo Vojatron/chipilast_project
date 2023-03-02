@@ -8,9 +8,9 @@ const {
     deleteCliente } = require('../controllers/cliente.controller')
 
 router.get('/', getAllClientes)
-router.get('/:id', getOneCliente)
+router.get('/:userName', getOneCliente)
 router.post('/', createCliente)
-router.put('/:id', updateCliente)
-router.delete('/:id', deleteCliente)
+router.put('/:userName', updateCliente)
+router.delete('/:userName', deleteCliente)
 
 module.exports = router

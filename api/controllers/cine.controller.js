@@ -1,4 +1,5 @@
 const Cine = require('../models/cine.model')
+const Admin = require('../models/admin.model')
 
 async function getAllCines(req, res) {
   try {
@@ -30,11 +31,20 @@ async function getOneCine(req, res) {
 
   async function createCine(req, res) {
     try {
+      const adminId = await req.params.adminId
+
+      const admin = await Admin.findOne({
+        where: {
+          id: adminId //revisar con Juan Pablo
+        }
+      })
+      console.log(id)
       const cine = await Cine.create({
         name: req.body.name,
         address: req.body.address,
-        numberOfCinemaRoom: req.body.numberOfCinemaRoom
+        numberOfCinemaRoom: req.body.numberOfCinemaRoom,
       })
+      await cine.setAdmin(admin)
       return res.status(200).json({ message: 'Cine created', cine: cine })
     } catch (error) {
       res.status(500).send(error.message)

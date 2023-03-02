@@ -9,7 +9,7 @@ const {
 
 router.get('/', getAllCines)
 router.get('/:name', getOneCine)
-router.post('/', createCine)
+router.post('/admin/:adminId', createCine)
 router.put('/:id', updateCine)
 router.delete('/:name', deleteCine)
 

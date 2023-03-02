@@ -3,12 +3,12 @@ const Pelicula = require('../api/models/pelicula.model')
 const Sala = require('../api/models/sala.model')
 const Butaca = require('../api/models/butaca.model')
 const Cliente = require('../api/models/cliente.model')
-const Administrador = require('../api/models/administrador.model')
+const Admin = require('../api/models/admin.model')
 
 function addRelationsToModels() {
   try {
-    Administrador.hasMany(Cine)
-    Cine.belongsTo(Administrador)
+    Admin.hasMany(Cine)
+    Cine.belongsTo(Admin)
 
     Cine.hasMany(Sala)
     Sala.belongsTo(Cine)
@@ -16,14 +16,14 @@ function addRelationsToModels() {
     Sala.hasOne(Pelicula)
     Pelicula.belongsTo(Sala)
 
-    Cine.belongsToMany(Pelicula, { through: 'CinePelicula'})
-    Pelicula.belongsToMany(Cine, { through: 'CinePelicula'})
+    Cine.hasMany(Pelicula)
+    Pelicula.belongsTo(Cine)
+    
+    Pelicula.hasMany(Butaca)
+    Butaca.belongsTo(Pelicula)
 
-    Pelicula.belongsToMany(Butaca, { through: 'PeliculaButaca'})
-    Butaca.belongsToMany(Pelicula, { through: 'PeliculaButaca'})
-
-    Butaca.hasMany(Cliente)
-    Cliente.belongsTo(Butaca)
+    Cliente.hasMany(Butaca)
+    Butaca.belongsTo(Cliente)
 
     console.log('Relations added to all models')
   } catch (error) {

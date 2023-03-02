@@ -1,16 +1,16 @@
 const router = require('express').Router()
 
 const { 
-    getAllAdmin, 
+    getAllAdmins, 
     getOneAdmin, 
     createAdmin, 
     updateAdmin,
-    deleteAdmin } = require('../controllers/administrador.controller')
+    deleteAdmin } = require('../controllers/admin.controller')
 
-router.get('/', getAllAdmin)
+router.get('/', getAllAdmins)
 router.get('/:userName', getOneAdmin)
 router.post('/', createAdmin)
-router.put('/:id', updateAdmin)
-router.delete('/:id', deleteAdmin)
+router.put('/:userName', updateAdmin)
+router.delete('/:userName', deleteAdmin)
 
 module.exports = router

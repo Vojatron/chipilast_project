@@ -12,7 +12,7 @@ const helmet = require('helmet')
 async function checkAndSyncPostgreSQL() {
   await checkConnection()
   addRelationsToModels()
-  await syncModels('alter')
+  await syncModels()
 }
 
 function initializeAndListenWithExpress() {

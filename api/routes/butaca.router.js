@@ -8,9 +8,9 @@ const {
     deleteButaca } = require('../controllers/butaca.controller')
 
 router.get('/', getAllButacas)
-router.get('/:name', getOneButaca)
+router.get('/:idNumber', getOneButaca)
 router.post('/', createButaca)
-router.put('/:id', updateButaca)
-router.delete('/:name', deleteButaca)
+router.put('/:idNumber', updateButaca)
+router.delete('/:idNumber', deleteButaca)
 
 module.exports = router

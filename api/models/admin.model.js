@@ -1,8 +1,8 @@
 const { DataTypes } = require('sequelize')
 const { sequelize } = require('../../database')
 
-const Administrador = sequelize.define(
-    'administrador',
+const Admin = sequelize.define(
+    'admin',
     {
       userName: {
         type: DataTypes.STRING,
@@ -27,9 +27,6 @@ const Administrador = sequelize.define(
         type: DataTypes.STRING,
         allowNull: false
       },
-      creditCard: {
-        type: DataTypes.INTEGER,
-      },
     //   rol: {
     //     type: DataTypes.ENUM(['admin', 'editor']),
     //     allowNull: false,
@@ -43,4 +40,4 @@ const Administrador = sequelize.define(
     { timestamps: false }
   )
   
-  module.exports = Administrador
+  module.exports = Admin
