@@ -7,18 +7,12 @@ const Butaca = sequelize.define(
       idNumber: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        unique: true
       },
       available: {
         type: DataTypes.BOOLEAN,
         allowNull: false,
         defaultValue: true
       },
-    //   type: {
-    //     type: DataTypes.ENUM(['standard', 'premium', 'vip']),
-    //     allowNull: false,
-    //     defaultValue: 'standard'
-    //   },
       extraPrice: {
         type: DataTypes.FLOAT,
         allowNull: false

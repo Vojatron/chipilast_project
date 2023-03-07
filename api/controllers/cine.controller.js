@@ -92,7 +92,6 @@ async function deleteCine(req, res) {
 async function getAllEstrenos(req, res) {
   try {
     const today = dateNow()
-    console.log(today)
 
     const estrenos = await Pelicula.findAll({
       where: {
@@ -114,11 +113,17 @@ async function getAllEstrenos(req, res) {
 
 async function getOneCineEstrenos(req, res) {
   try {
-
+    const today = dateNow()
     const cine = await Cine.findByPk(req.params.id)
     // console.log(cine.toJSON())
 
-    const peliculas = await cine.getPeliculas()
+    const peliculas = await cine.getPeliculas({
+      where: {
+        releaseDate: {
+          [Op.gte]: today
+        }
+      }
+    })
     if (peliculas) {
       return res.status(200).json(peliculas)
     } else {

@@ -4,9 +4,11 @@ const { getAllPeliculas,
         getOnePelicula, 
         createPelicula, 
         updatePelicula, 
-        deletePelicula} = require('../controllers/pelicula.controller')
+        deletePelicula,
+        getAllPeliculasOneCine} = require('../controllers/pelicula.controller')
 
 router.get('/', getAllPeliculas)
+router.get('/cine/:id', getAllPeliculasOneCine)
 router.get('/:name', getOnePelicula)
 router.post('/', createPelicula)
 router.put('/:id', updatePelicula)

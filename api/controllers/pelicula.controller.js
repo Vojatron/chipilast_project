@@ -1,4 +1,5 @@
 const Pelicula = require('../models/pelicula.model')
+const Cine = require('../models/cine.model')
 const {Op} = require("sequelize")
 
 async function getAllPeliculas(req, res) {
@@ -81,9 +82,25 @@ async function getAllPeliculas(req, res) {
     }
   }
 
+  async function getAllPeliculasOneCine(req, res) {
+    try {
+      const cine = await Cine.findByPk(req.params.id)
+      const pelicula = await cine.getPeliculas()
+  
+      if (pelicula) {
+        return res.status(200).json(pelicula)
+      } else {
+        return res.status(404).send('Película not found')
+      }
+    } catch (error) {
+      return res.status(500).send(error.message)
+    }
+  }
+
 module.exports = { 
   getAllPeliculas, 
   getOnePelicula, 
   createPelicula, 
   updatePelicula, 
-  deletePelicula }
+  deletePelicula,
+  getAllPeliculasOneCine }
